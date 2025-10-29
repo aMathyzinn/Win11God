@@ -1,185 +1,162 @@
 <div align="center">
 
-  <img src="./win11god.png" alt="Win11God logo" width="96"/>
+<img src="./win11god.png" alt="Win11God logo" width="96"/>
 
 # Win11God
 
-**Otimizador e Debloater para Windows 11 (compatível com 10)**
+**A Windows 11‑style performance & debloat dashboard built in PowerShell + WPF.**
 
-  <br/>
+[![PowerShell](https://img.shields.io/badge/PowerShell-7%2B-5391FE?logo=powershell\&logoColor=white)](https://learn.microsoft.com/powershell/)
+[![WPF](https://img.shields.io/badge/WPF-XAML-9146FF)](#)
+[![Windows](https://img.shields.io/badge/Windows-10%20%7C%2011-0078D6?logo=windows\&logoColor=white)](#)
+[![Languages](https://img.shields.io/badge/i18n-pt%20%7C%20en%20%7C%20es-00A650)](#)
+[![Open Source](https://img.shields.io/badge/Open%20Source-Yes-1DB954)](#)
 
-![PowerShell](https://img.shields.io/badge/PowerShell-5.1%2B-0273B3?logo=powershell\&logoColor=white)
-![Framework](https://img.shields.io/badge/WPF%20XAML-Dark%20UI-5B5B5B)
-![OS](https://img.shields.io/badge/Windows-10%20%7C%2011-0078D6?logo=windows\&logoColor=white)
-![Status](https://img.shields.io/badge/Status-Ativo-success)
-
-<sub>Interface principal</sub>
-
-  <img src="./screenshot_win11god.png" alt="Win11God UI" width="900"/>
 </div>
+
+> **Straightforward. Reversible. Fast.**
+>
+> Win11God centralizes safe Windows tweaks (cleanup, privacy, UX trimming) with one UI. Every change logs to a panel and most actions have one‑click **Revert**.
 
 ---
 
-## Sumário
+## ✨ Highlights
 
-* [Visão Geral](#visão-geral)
-* [Destaques](#destaques)
-* [Requisitos](#requisitos)
-* [Como executar](#como-executar)
-* [Funcionalidades](#funcionalidades)
-* [Idiomas](#idiomas)
-* [Segurança e Reversão](#segurança-e-reversão)
-* [Parâmetros de Execução](#parâmetros-de-execução)
-* [Logs](#logs)
-* [Build para Dev](#build-para-dev)
-* [Roadmap](#roadmap)
-* [Contribuindo](#contribuindo)
-* [FAQ](#faq)
-* [Licença](#licença)
-
-## Visão Geral
-
-Ferramenta gráfica em **PowerShell + WPF** para aplicar **otimizações seguras**, reduzir **telemetria**, fazer **limpeza**, e realizar **debloat** seletivo de apps e serviços. Traz **ponto de restauração opcional**, **UI responsiva**, e **modo simulação**.
-
-## Destaques
-
-* ⚡ **One‑click**: selecione e aplique.
-* 🧼 **Limpeza rápida**: Temp, Lixeira, Windows Update, Store, Recentes, DNS.
-* 🛡️ **Privacidade**: reduz telemetria e desativa serviços/itens de rastreio suportados.
-* 🎮 **Performance**: Game Bar/DVR off, animações reduzidas, Storage Sense, sugestões e widgets.
-* 📦 **Debloat guiado**: remover UWP bloatware e provisioned packages com critério.
-* ♻️ **Reversão**: botões dedicados para restaurar configurações críticas.
-* 🌐 **Multi‑idioma**: PT, EN, ES com persistência em `%APPDATA%`.
-* 🪟 **Aparência Win11**: Mica/Acrílico, dark, controles customizados.
-
-## Requisitos
-
-* Windows 10 21H2+ ou **Windows 11**.
-* **PowerShell 5.1+** (ou 7.x com compatibilidade de WPF no Windows).
-* Execução com **Admin** recomendada para mudanças do sistema.
-
-## Como executar
-
-> Sem URLs inventadas. Use o repo local clonado.
-
-```powershell
-# 1) Abrir PowerShell como Administrador
-# 2) Na pasta do projeto:
-Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
-.\win11god.ps1
-```
-
-Modo sem elevação:
-
-```powershell
-.\win11god.ps1 -NoElevation
-```
-
-> Dica: a UI pede elevação automática caso necessário. O modo `-NoElevation` mantém tudo no mesmo terminal.
-
-## Funcionalidades
-
-### Geral
-
-* **Limpeza**: Temp, Lixeira, Windows Update cache, Microsoft Store (`wsreset`), recentes/jump lists, flush DNS.
-* **Sistema**: Desativar Inicialização Rápida, reduzir Telemetria.
-* **Experiência e Desempenho**: Desativar Game Bar/DVR, reduzir animações, ativar Storage Sense, desativar sugestões, widgets, apps em background e Copilot.
-* **Restauração**: criação opcional de **Ponto de Restauração**.
-
-### Reverter
-
-* Reativar **Inicialização Rápida**.
-* Reverter **Telemetria** e tentar restaurar serviços ligados.
-* Restaurar barra de tarefas/menu iniciar/context menu padrão do Win11.
-* Botão de **reversão completa** (onde aplicável).
-
-### Debloat (seletivo)
-
-* Remoção de UWP: **Candy Crush, Xbox suite, Skype, Groove Music, Filmes & TV, Microsoft News, Weather, Maps, 3D Viewer,** entre outros.
-* Remove também **provisioned packages** para novos usuários quando possível.
-* Serviços pesados opcionais: **Windows Search** (indexação), **Fax**, **Tablet Input**, **SysMain**.
-
-## Idiomas
-
-* 🇧🇷 **pt-BR** (padrão)
-* 🇺🇸 **en**
-* 🇪🇸 **es**
-
-Preferência salva em `%APPDATA%/Win11God/language.json`.
-
-## Segurança e Reversão
-
-* **Ponto de Restauração** integrado via `Checkpoint-Computer`.
-* Ações críticas expostas com **botões de desfazer**.
-* Logs visíveis em tempo real na UI.
-
-> Aviso: alterações do sistema implicam risco. Leia o log, escolha apenas o que entende e **reinicie** quando for necessário.
-
-## Parâmetros de Execução
-
-```text
--NoElevation  Executa sem solicitar elevação. Algumas ações podem falhar.
-```
-
-## Logs
-
-* Painel de log na parte inferior da UI.
-* Botão **Salvar Log** exporta `.txt` com timestamp.
-
-## Build para Dev
-
-* Código em **PowerShell** com **WPF (XAML)**.
-* Backdrop Mica/Acrylic via P/Invoke (`user32`, `dwmapi`).
-* Runspaces para manter a UI responsiva durante tarefas longas.
-
-Estrutura esperada (mínimo):
-
-```
-/ (raiz)
-  win11god.ps1
-  win11god.png
-  screenshot_win11god.png
-  README.md
-```
-
-## Roadmap
-
-* [ ] Perfis de otimização predefinidos (Básico/Equilibrado/Agressivo).
-* [ ] Modo **Simulação** completo em todas as ações.
-* [ ] Painel de **restauração granular** por item.
-* [ ] Telemetria: matriz por edição (Home/Pro/Enterprise) com limites do Windows documentados.
-* [ ] Exportar/Importar presets.
-
-## Contribuindo
-
-* **Issues**: relate bugs com log e passos.
-* **PRs**: foco em segurança, reversibilidade e UX. Sem links externos não verificados.
-* Padrões: evitar “gambiarras”, preferir funções idempotentes, checagens de permissão e try/catch com mensagens claras.
-
-## FAQ
-
-**Funciona no Windows 10?**
-
-> Sim. Otimizações específicas de Win11 aplicam fallback seguro. O log indica o que foi pulado.
-
-**Preciso rodar como Admin?**
-
-> Recomendado. Sem admin, várias ações serão ignoradas.
-
-**Consigo desfazer tudo?**
-
-> Itens críticos têm reversão. Para total segurança, use sempre **Ponto de Restauração**.
-
-**Vai aumentar FPS?**
-
-> Remove gargalos comuns e ruído de background. Ganho varia por máquina e uso.
-
-## Licença
-
-Defina a licença do projeto (ex.: MIT). Inclua o arquivo `LICENSE` na raiz.
+* 🪟 **Native Win11 look** — custom titlebar, Mica/Acrylic backdrop, dark theme.
+* 🚀 **One‑click optimizations** — Temp cleanup, Recycle Bin empty, Windows Update cache purge, DNS flush, Store reset, Recent files cleanup.
+* 🧩 **Performance toggles** — Disable Fast Startup, reduce Telemetry, trim UI animations, disable Game Bar/DVR, Widgets, tips, background apps, Copilot.
+* 🧼 **Debloat panel** — Remove bloat UWP apps (Candy Crush, Xbox suite, Skype, Groove, Movies & TV, News, Weather, Maps, 3D Viewer, etc.).
+* 🛟 **Safety first** — Optional **Restore Point** before applying and **Revert** actions (e.g., re‑enable Fast Startup, telemetry, services, taskbar/start menu defaults).
+* 🌐 **Built‑in i18n** — UI in **Português / English / Español** with runtime switch & persisted preference.
+* 📝 **Live log + Save** — Full on‑screen log and export to file.
 
 ---
 
-<div align="center">
-  <sub>Feito para quem quer Windows magro, previsível e rápido.</sub>
-</div>
+## 📸 UI Preview
+
+<p align="center">
+  <img src="./screenshot_win11god.png" alt="Win11God interface screenshot" width="900"/>
+</p>
+
+---
+
+## 📦 Requirements
+
+* **Windows 11** (designed for) — also works on **Windows 10** with caution (fallbacks in place)
+* **PowerShell 5.1+** (preinstalled on Windows) or **PowerShell 7+**
+* **Administrator privileges** for most system tweaks (the app can run without, but some actions will be skipped)
+
+---
+
+## 🛠️ Setup & Run
+
+> No external installers. Just clone and run the script. If you prefer a dry run, use `-NoElevation` and **Simulate** buttons.
+
+```powershell
+# 1) Clone this repository
+# 2) Start PowerShell as Administrator (recommended)
+# 3) Run the main script
+
+Set-ExecutionPolicy Bypass -Scope Process -Force
+./Win11God.ps1
+
+# Optional: run without auto‑elevation (useful for testing)
+./Win11God.ps1 -NoElevation
+```
+
+> **Note**: Execution policy is temporarily relaxed **only for the current session** in the snippet above.
+
+---
+
+## 🧭 Features Overview
+
+### General → Cleanup
+
+* Delete temporary files (User + System Temp)
+* Empty Recycle Bin
+* Clear Windows Update cache
+* Flush DNS cache
+* Reset Microsoft Store cache
+* Clear Recent Files & Jump Lists
+
+### General → System & Performance
+
+* Disable **Fast Startup** (and **Reactivate** in Revert)
+* Reduce **Telemetry** to minimum allowed (and **Revert**)
+* Disable **Game Bar/DVR**
+* Reduce **UI animations**
+* Enable **Storage Sense** defaults
+* Disable **suggestions & tips**
+* Disable **Widgets**
+* Disable **background apps**
+* Disable **Copilot** (Win11 23H2+)
+
+### Debloat (Apps & Services)
+
+* Remove UWP bundles: **Candy Crush**, **Xbox suite**, **Skype**, **Groove**, **Movies & TV**, **News**, **Weather**, **Maps**, **3D Viewer**, etc.
+* Heavy services (advanced): **Windows Search indexing**, **Fax**, **Tablet Input**, **SysMain (Superfetch)**, **Cortana related**
+
+### Revert
+
+* Reactivate **Fast Startup**
+* Revert **Telemetry** settings
+* Restore disabled **services** and default UI behaviors (taskbar, start menu, context menu)
+
+---
+
+## 🌍 Languages
+
+The UI ships with **Português (pt)**, **English (en)**, and **Español (es)**. On first run you can pick a language; your choice is saved to `%APPDATA%/Win11God/language.json`.
+
+---
+
+## 🔐 Security & Transparency
+
+* **No installers**; pure script. Readable PowerShell code with explicit registry/service changes.
+* **Admin check** with clear warnings when actions might fail without elevation.
+* **Logging** to an on‑screen console with timestamps; optional **Save Log**.
+* **Restore Point** option to allow system rollback via Windows System Restore.
+
+> Tip: Review the code before running. You’re in control.
+
+---
+
+## 🧪 Development
+
+* **Stack**: PowerShell + WPF (XAML), custom Win32 interop (Mica/Acrylic), runspaces for responsive background tasks.
+* **Structure**: UI (XAML) + logic functions (cleanup, debloat, revert, i18n, logging) in a single script for easy auditing.
+
+### Useful Developer Flags
+
+```powershell
+# Start without auto‑elevating (keeps same console)
+./Win11God.ps1 -NoElevation
+```
+
+---
+
+## 🤝 Contributing
+
+PRs are welcome. Keep changes **auditable** and **reversible**. If you add a new tweak:
+
+* Include **log messages**, **i18n strings**, and **Revert** when applicable.
+* Prefer **policies/registry** over external binaries.
+* Document the rationale in the PR description.
+
+---
+
+## 🧾 License
+
+This project is open source. See **LICENSE** for details.
+
+---
+
+## 📣 Credits
+
+Built by **aMathyzin**. Portfolio: [https://amathyzin.xyz](https://amathyzin.xyz)
+
+---
+
+## ⚠️ Disclaimer
+
+You use these tweaks at your own risk. Although this tool favors safe defaults and provides reversion paths, environments vary. Create a restore point or backup before major changes.
